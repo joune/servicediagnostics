@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<project default="main">
+
+  <property environment="env" />
+  <path id="CLASSPATH">
+    <fileset dir="${env.INSTALL_DIR}/bundles/repository/core"><include name="*.jar" /></fileset>
+    <fileset dir="${env.INSTALL_DIR}/bundles/felix"><include name="*.jar" /></fileset>
+    <fileset dir="${env.INSTALL_DIR}/lib"><include name="*.jar" /></fileset>
+    <fileset dir="${env.INSTALL_DIR}/autotest/lib"><include name="*.jar" /></fileset>
+    <fileset dir="."><include name="*.jar" /></fileset>
+    <pathelement location="classes"/>
+  </path>
+  <taskdef resource="scala/tools/ant/antlib.xml">
+    <classpath>
+      <pathelement location="${env.SCALA_HOME}/lib/scala-compiler.jar"   />
+      <pathelement location="${env.SCALA_HOME}/lib/scala-library.jar"   />
+    </classpath>
+  </taskdef>
+
+  <taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="/home/panday/bnd.jar"/> 
+
+  <target name="main" depends="init, compile, bnd">
+    <echo>done.</echo>
+  </target>
+  
+  <target name="init">
+    <mkdir dir="classes" />
+  </target>
+  
+  <target name="compile">
+    <fsc srcdir="src/main/scala" destdir="classes" classpathref="CLASSPATH"/>
+  </target>
+  
+  <target name="bnd"> 
+    <bnd 
+      classpath="classes" 
+      eclipse="false" 
+      failok="false" 
+      exceptions="true" 
+      files="bnd.bnd"/>
+  </target>
+
+  <target name="test">
+    <fsc srcdir="src/main/scala" destdir="classes" classpathref="CLASSPATH"/>
+    <bnd 
+      classpath="classes" 
+      eclipse="false" 
+      failok="false" 
+      exceptions="true" 
+      files="test.bnd"/>
+    <java classname="com.alcatel.scala.test.FelixLauncher" classpathref="CLASSPATH">
+      <arg value="servicediagnostics.jar lib/felix.jar lib/json.jar lib/org.apache.felix.dependencymanager.jar lib/org.apache.felix.scr.jar lib/org.osgi.compendium.jar lib/org.apache.felix.http.jetty.jar lib/org.apache.felix.webconsole.jar lib/org.apache.felix.shell.jar lib/org.apache.felix.dependencymanager.shell.jar lib/scala-library-osgi.jar lib/scalatest-helpers.jar"/>
+    </java>
+
+  </target>
+
+  <target name="clean" description="Delete all generated files">
+    <delete dir="classes" includes="**/*.class"/>
+    <delete dir="." includes="*.jar"/>
+  </target>
+</project>
+
+
