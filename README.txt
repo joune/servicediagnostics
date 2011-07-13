@@ -23,7 +23,6 @@ How to build the project:
 =========================
 I'm not a major fan of maven, but I haven't quite figured out how to use the bnd4sbt sbt plugin, so lets start with maven. This may change in the future.
 
-> mvn scala:compile
 > mvn install
 
 How to run:
@@ -31,9 +30,20 @@ How to run:
 I'm providing a simple run script just to try it out:
 > ./run.sh
 
+It should display:
+[INFO] Started jetty 6.1.x at port(s) HTTP:8080
+
+You can then point your browser to 
+http://localhost:8080/system/console/servicegraph
+
+and click on either "Unavail" or "All". 
+The "bubbles" can be dragged around for better readability. The colors are random and don't mean anything. 
+On the "All" view, arrows point from bundles to the services they use. 
+On the "Unavail" view, arrows point from a leaf component to its missing dependencies.
+
 Issues & TODOs:
 ===============
-* use of JSONObject in Servlet.scala is a bit awkward, but Scala's native json is missing the quotes... i must be missing something!
+* use of JSONObject in Servlet.scala is a bit awkward, but Scala's native json is still incomplete.. 
 * no support for service properties; needs to be added.
 * no support for iPojo, Blueprint, basic ServiceTrackers... more plugins could be developed. I only wrote the ones i'm using.
 * proper tests!
