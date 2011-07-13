@@ -1,8 +1,9 @@
-package servicediagnostics.test
+package servicediagnostics.sample
 
 import org.osgi.framework.BundleContext
 import org.apache.felix.dm.DependencyActivatorBase
 import org.apache.felix.dm.DependencyManager
+import servicediagnostics.ServiceDiagnostics
 
 class TestDM extends DependencyActivatorBase
 {

@@ -21,9 +21,10 @@ Project organization:
 
 How to build the project:
 =========================
-I haven't quite figured out how to use the bnd4sbt sbt plugin, and i'm not a major fan of maven, so I'll start with a basic ant build. This may change in the future.
+I'm not a major fan of maven, but I haven't quite figured out how to use the bnd4sbt sbt plugin, so lets start with maven. This may change in the future.
 
-> ant
+> mvn scala:compile
+> mvn install
 
 How to run:
 ===========

@@ -1,4 +1,4 @@
-package servicediagnostics.test
+package servicediagnostics.sample
 
 import aQute.bnd.annotation.component._
 

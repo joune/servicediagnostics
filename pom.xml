@@ -6,7 +6,13 @@
   <groupId>fr.arjunpanday</groupId>
   <artifactId>servicediagnostics</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <packaging>bundle</packaging>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>core</module>
+    <module>sample</module>
+  </modules>
+
 
   <repositories>
     <repository>
@@ -46,19 +52,9 @@
       <version>3.0.0</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.felix</groupId>
-      <artifactId>org.apache.felix.webconsole</artifactId>
-      <version>3.1.8</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.felix</groupId>
-      <artifactId>javax.servlet</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <version>20090211</version>
+      <groupId>biz.aQute</groupId>
+      <artifactId>bndlib</artifactId>
+      <version>1.43.0</version>
     </dependency>
   </dependencies>
 
@@ -75,29 +71,8 @@
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
-        <version>2.3.4</version>
+        <version>2.3.5</version>
         <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Bundle-Category>osgi</Bundle-Category>
-            <Bundle-SymbolicName>
-              ${project.artifactId}
-            </Bundle-SymbolicName>
-            <Bundle-Activator>
-              servicediagnostics.impl.Activator
-            </Bundle-Activator>
-            <Export-Package>
-              servicediagnostics;version=1.0
-            </Export-Package>
-            <Private-Package>
-              servicediagnostics.impl,
-              servicediagnostics.webconsole
-            </Private-Package>
-            <Include-Resource>
-              src/main/resources
-            </Include-Resource>
-          </instructions>
-        </configuration>
       </plugin>
     </plugins>
   </build>
