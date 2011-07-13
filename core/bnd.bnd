@@ -1,5 +1,0 @@
-Bundle-Name: Service Diagnostics
-Bundle-SymbolicName: servicediagnostics
-Bundle-Activator: servicediagnostics.test.Activator
-Private-Package: servicediagnostics,servicediagnostics.impl,servicediagnostics.webconsole
-Include-Resource: src/main/resources

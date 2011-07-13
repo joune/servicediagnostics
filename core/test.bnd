@@ -1,6 +1,0 @@
-Bundle-Name: Service Diagnostics Test
-Bundle-SymbolicName: servicediagnostics.test
-Bundle-Activator: servicediagnostics.test.TestDM
-Service-Component: *
-Private-Package: servicediagnostics.test
-Import-Package: !aQute.bnd.annotation.component,*
