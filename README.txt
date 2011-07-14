@@ -11,19 +11,23 @@ Typically, if A depends on B which depends on C which depends on D, and D is now
 
 Similarly, if D is known by another dependency management system, but unregistered because it depends on E which is missing, then only the "D -> E" requirement is relevant. 
 
-Project organization:
-=====================
+Project organization (core):
+============================
 * servicediagnostics: the API package. It holds the main service interface as well as the plugin interface, to extend to other dependency management systems
 
 * servicediagnostics.impl: the implementation package. It contains plugins implementations for org.apache.felix.scr and org.apache.felix.dependencymanager, as well as the main service implementation.
 
 * servicediagnostics.webconsole: a Felix WebConsole plugin that displays a graphical view of the diagnostics result. Alternatively it can also show a graph of all services currently registered in the service registry and the bundles using them. See Screenshot-notavail.png and Screenshot-all.png. 
 
+The "sample" part simply contains some test classes and a helper class to launch Felix. 
+
 How to build the project:
 =========================
 I'm not a major fan of maven, but I haven't quite figured out how to use the bnd4sbt sbt plugin, so lets start with maven. This may change in the future.
 
 > mvn install
+
+(don't panic, it will start by downloading the entire internet; this is normal behaiour)
 
 How to run:
 ===========
@@ -36,7 +40,8 @@ It should display:
 You can then point your browser to 
 http://localhost:8080/system/console/servicegraph
 
-and click on either "Unavail" or "All". 
+(login/password is admin/admin)
+then click on either "Unavail" or "All". 
 The "bubbles" can be dragged around for better readability. The colors are random and don't mean anything. 
 On the "All" view, arrows point from bundles to the services they use. 
 On the "Unavail" view, arrows point from a leaf component to its missing dependencies.
