@@ -1,6 +1,14 @@
 OSGi Service Diagnostics and WebConsole Plugin
 ==============================================
 
+IMPORTANT NOTE: This project has been accepted as an Apache Felix subproject in September 2011. Please visit the Apache Felix website (http://felix.apache.org) and svn repository (http://svn.apache.org/viewvc/felix/trunk/webconsole-plugins/servicediagnostics/) for latest developments. 
+
+
+
+
+
+===
+
 This projects aims at easing diagnostics of OSGi services and finding about missing dependencies.
 
 Typically in a large system with many cascading dependencies managed by different trackers such as DeclarativeService, DependencyManager or others, tracking the root cause of a top level service not being started can become very cumbersome. When building service oriented architectures, it is often the case that a single missing requirement will lock a full stack of services, but to find that one requirement is like finding a needle in a haystack!
