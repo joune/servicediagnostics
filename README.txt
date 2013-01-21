@@ -6,7 +6,6 @@ IMPORTANT NOTE: This project has been accepted as an Apache Felix subproject in 
 
 
 
-
 ===
 
 This projects aims at easing diagnostics of OSGi services and finding about missing dependencies.
